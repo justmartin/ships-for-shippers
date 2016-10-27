@@ -22,6 +22,12 @@
   <div class="col-md-4">
   	<h2>Jobs</h2>
   	<%= form_for Job.new do |form| %>
+  		<%= form.label :title %> <br>
+  		<%= form.text_field :title %>
+  		<br>
+  		<%= form.label :date %> <br>
+  		<%= form.date_field :date %>
+  		<br>
   		<%= form.label :description %> <br>
   		<%= form.text_area :description %>
   		<br>
@@ -50,7 +56,7 @@
   		<%= select_tag "boat_id", options_from_collection_for_select(@boats, "id", "name") %>
   		<br>
   		<%= form.label :job_id %> <br>
-  		<%= select_tag "job_id", options_from_collection_for_select(@jobs, "id", "description") %>
+  		<%= select_tag "job_id", options_from_collection_for_select(@jobs, "id", "title") %>
   		<br>
   		<br>
   		<%= form.submit "Assign" %>

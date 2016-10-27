@@ -18,6 +18,8 @@ has_many :jobs, through: :boats_jobs
 belongs_to :user
 
 jobs
+-date (datetime)
+-title (string)
 -description (text)
 -origin (string)
 -destination (string)
