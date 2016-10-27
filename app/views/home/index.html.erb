@@ -1,1 +1,67 @@
-<h1>Home Page</h1>
+<h1>Hi, <%= current_user.fname %></h1>
+
+<div class="row">
+
+  <div class="col-md-4">
+  	<h2>Boats</h2>
+  	<%= form_for Boat.new do |form| %>
+  		<%= form.label :name %> <br>
+  		<%= form.text_field :name %>
+  		<br>
+  		<%= form.label :container_capacity %> <br>
+  		<%= form.number_field :container_capacity %>
+  		<br>
+  		<%= form.label :location %> <br>
+  		<%= form.text_field :location %>
+  		<br>
+  		<%= form.hidden_field :user_id, :value => current_user.id %> <br>
+  		<%= form.submit %>
+  	<% end %>
+  </div>
+
+  <div class="col-md-4">
+  	<h2>Jobs</h2>
+  	<%= form_for Job.new do |form| %>
+  		<%= form.label :description %> <br>
+  		<%= form.text_area :description %>
+  		<br>
+  		<%= form.label :origin %> <br>
+  		<%= form.text_field :origin %>
+  		<br>
+  		<%= form.label :destination %> <br>
+  		<%= form.text_field :destination %>
+  		<br>
+  		<%= form.label :cost %> <br>
+  		<%= form.number_field :cost %>
+  		<br>
+  		<%= form.label :containers_needed %> <br>
+  		<%= form.number_field :containers_needed %>
+  		<br>
+  		<br>
+  		<%= form.submit %>
+  	<% end %>
+  </div>
+
+  <div class="col-md-4">
+  	<h2>Assign Boats-2-Jobs</h2>
+
+  	<%= form_for BoatsJob.new do |form| %>
+  		<%= form.label :boat_id %> <br>
+  		<%= select_tag "boat_id", options_from_collection_for_select(@boats, "id", "name") %>
+  		<br>
+  		<%= form.label :job_id %> <br>
+  		<%= select_tag "job_id", options_from_collection_for_select(@jobs, "id", "description") %>
+  		<br>
+  		<br>
+  		<%= form.submit "Assign" %>
+  	<% end %>
+  </div>
+
+</div>
+
+<div class="row">
+
+</div>
+
+
+

@@ -31,3 +31,8 @@ boats_jobs
 -job_id (integer)
 belongs_to :boat
 belongs_to :job
+
+
+1) user should be able to create boats associated with their ID
+2) user should be able to create jobs 
+3) user should be able to assign boats to jobs
