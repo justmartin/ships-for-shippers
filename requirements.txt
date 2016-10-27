@@ -1,0 +1,33 @@
+Ships for Shippers
+
+MODELS:
+users
+-first_name (string)
+-last_name (string)
+-email (string)
+-password (string)
+has_many :boats
+
+boats
+-name (string)
+-container_capacity (integer)
+-location (string)
+-user_id
+has_many :boats_jobs
+has_many :jobs, through: :boats_jobs
+belongs_to :user
+
+jobs
+-description (text)
+-origin (string)
+-destination (string)
+-cost (decimal)
+-containers_needed
+has_many :boats_jobs
+has_many :boats, through: :boats_jobs
+
+boats_jobs
+-boat_id (integer)
+-job_id (integer)
+belongs_to :boat
+belongs_to :job
