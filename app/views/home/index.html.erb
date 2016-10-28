@@ -6,8 +6,8 @@
   	<h2>Boats</h2>
   	<%= form_for Boat.new do |form| %>
 
-	  	<% if flash[:error] %>
-		  	<% flash[:error].each do |msg| %>
+	  	<% if flash[:boat_error] %>
+		  	<% flash[:boat_error].each do |msg| %>
 				  <p class="alert alert-danger"><%= msg %></p>
 		  	<% end %>
 	  	<% end %>
@@ -29,6 +29,13 @@
   <div class="col-md-4">
   	<h2>Jobs</h2>
   	<%= form_for Job.new do |form| %>
+
+  		<% if flash[:job_error] %>
+		  	<% flash[:job_error].each do |msg| %>
+				  <p class="alert alert-danger"><%= msg %></p>
+		  	<% end %>
+	  	<% end %>
+
   		<%= form.label :title %> <br>
   		<%= form.text_field :title %>
   		<br>

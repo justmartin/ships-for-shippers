@@ -11,7 +11,7 @@ class BoatsController < ApplicationController
       redirect_to "/"
     else
       flash[:alert] = "There Was An Error Creating Your Boat."
-      flash[:error] = @boat.errors.full_messages
+      flash[:boat_error] = @boat.errors.full_messages
       redirect_to "/"
     end
   end

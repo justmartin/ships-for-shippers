@@ -4,12 +4,14 @@ class JobsController < ApplicationController
   end
 
   def create
-    job = Job.new(job_params)
-    if job.save
+    @job = Job.new(job_params)
+
+    if @job.save
       flash[:notice] = "Your Job Was Created!"
       redirect_to "/"
     else
       flash[:alert] = "There Was An Error Creating Your Job."
+      flash[:job_error] = @job.errors.full_messages
       redirect_to "/"
     end
   end
