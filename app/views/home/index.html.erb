@@ -4,7 +4,7 @@
 
   <div class="col-md-4">
   	<h2>Boats</h2>
-  	<%= form_for Boat.new do |form| %>
+  	<%= form_for Boat.new, :url => "/boats", :html => { :multipart => true } do |form| %>
 
 	  	<% if flash[:boat_error] %>
 		  	<% flash[:boat_error].each do |msg| %>
@@ -20,6 +20,9 @@
   		<br>
   		<%= form.label :location %> <br>
   		<%= form.select "location", options_for_select(@locations) %>
+  		<br>
+  		<br>
+			 <%= form.file_field :avatar %>
   		<br>
   		<%= form.hidden_field :user_id, :value => current_user.id %> <br>
   		<%= form.submit %>
@@ -65,7 +68,7 @@
   <div class="col-md-4">
   	<h2>Assign Boats-2-Jobs</h2>
 
-  	<%= form_for BoatsJob.new do |form| %>
+  	<%= form_for BoatsJob.new, remote: true do |form| %>
   		<%= form.label :boat_id %> <br>
   		<%= select_tag "boat_id", options_from_collection_for_select(@boats, "id", "name") %>
   		<br>
@@ -79,6 +82,8 @@
 
 </div>
 
+<!-- ======================================================= -->
+
 <div class="row">
 	<div class="col-md-4">
   	<h2>All Boats</h2>
@@ -88,6 +93,7 @@
 	  		<li><strong><%= boat.name %></strong></li>
 	  		<p>Container Capacity: <%= boat.container_capacity %></p>
 	  		<p>Location: <%= boat.location %></p>
+	  		<%= image_tag boat.avatar.url(:medium) %>
 	  	<% end %>
   	</ul>
   </div>
