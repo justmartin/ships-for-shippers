@@ -12,7 +12,7 @@
   		<%= form.number_field :container_capacity %>
   		<br>
   		<%= form.label :location %> <br>
-  		<%= form.text_field :location %>
+  		<%= form.select "location", options_for_select(@locations) %>
   		<br>
   		<%= form.hidden_field :user_id, :value => current_user.id %> <br>
   		<%= form.submit %>
@@ -84,11 +84,11 @@
   	 <ul>
 	  	<% @jobs.each do |job| %>
 	  		<li><strong>Name: <%= job.title %></strong></li>
-	  		<p>Date: <%= job.date %></p>
+	  		<p>Date: <%= job.date.strftime("%m/%d/%Y") %></p>
 	  		<p><%= job.description %></p>
 	  		<p>Origin: <%= job.origin %></p>
 	  		<p>Destination: <%= job.destination %></p>
-	  		<p>Cost: <%= job.cost %></p>
+	  		<p>Cost: <%= number_to_currency(job.cost, unit: "$") %></p>
 	  		<p>Containers Needed: <%= job.containers_needed %></p>
 	  	<% end %>
   	</ul>
@@ -99,8 +99,8 @@
 
   	 <ul>
 	  	<% @assignments.each do |assignment| %>
-	  		<li><%= assignment.boat.name %></li>
-	  		<p><%= assignment.job.title %></p>
+	  		<li>Boat: <%= assignment.boat.name %></li>
+	  		<p>Job: <%= assignment.job.title %></p>
 	  	<% end %>
   	</ul>
   </div>

@@ -16,6 +16,8 @@ boats
 has_many :boats_jobs
 has_many :jobs, through: :boats_jobs
 belongs_to :user
+*must have a unique name
+*locations must be pulled from a valid list of locations (hard-coded list)
 
 jobs
 -date (datetime)
@@ -27,12 +29,17 @@ jobs
 -containers_needed
 has_many :boats_jobs
 has_many :boats, through: :boats_jobs
+*must have a unique name
+*cost must be > $1000
+*description must be >= 50
+*orgin/destination must be pulled from a valid list of locations (hard-coded list)
 
 boats_jobs
 -boat_id (integer)
 -job_id (integer)
 belongs_to :boat
 belongs_to :job
+
 
 
 1) user should be able to create boats associated with their ID

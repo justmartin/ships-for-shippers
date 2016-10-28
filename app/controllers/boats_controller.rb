@@ -9,7 +9,7 @@ class BoatsController < ApplicationController
       flash[:notice] = "Your Boat Was Created!"
       redirect_to "/"
     else
-      flash[:notice] = "There Was An Error Creating Your Boat."
+      flash[:alert] = "There Was An Error Creating Your Boat."
       redirect_to "/"
     end
   end
