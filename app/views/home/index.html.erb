@@ -5,6 +5,13 @@
   <div class="col-md-4">
   	<h2>Boats</h2>
   	<%= form_for Boat.new do |form| %>
+
+	  	<% if flash[:error] %>
+		  	<% flash[:error].each do |msg| %>
+				  <p class="alert alert-danger"><%= msg %></p>
+		  	<% end %>
+	  	<% end %>
+
   		<%= form.label :name %> <br>
   		<%= form.text_field :name %>
   		<br>
@@ -32,10 +39,10 @@
   		<%= form.text_area :description %>
   		<br>
   		<%= form.label :origin %> <br>
-  		<%= form.text_field :origin %>
+  		<%= form.select "origin", options_for_select(@locations) %>
   		<br>
   		<%= form.label :destination %> <br>
-  		<%= form.text_field :destination %>
+  		<%= form.select "destination", options_for_select(@locations) %>
   		<br>
   		<%= form.label :cost %> <br>
   		<%= form.number_field :cost %>

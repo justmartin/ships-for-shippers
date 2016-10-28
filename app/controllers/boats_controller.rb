@@ -4,12 +4,14 @@ class BoatsController < ApplicationController
   end
 
   def create
-    boat = Boat.new(boat_params)
-    if boat.save
+    @boat = Boat.new(boat_params)
+
+    if @boat.save
       flash[:notice] = "Your Boat Was Created!"
       redirect_to "/"
     else
       flash[:alert] = "There Was An Error Creating Your Boat."
+      flash[:error] = @boat.errors.full_messages
       redirect_to "/"
     end
   end
