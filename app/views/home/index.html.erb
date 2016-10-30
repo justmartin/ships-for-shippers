@@ -25,7 +25,7 @@
 			 <%= form.file_field :avatar %>
   		<br>
   		<%= form.hidden_field :user_id, :value => current_user.id %> <br>
-  		<%= form.submit %>
+  		<%= form.submit class: "btn btn-primary" %>
   	<% end %>
   </div>
 
@@ -61,7 +61,7 @@
   		<%= form.number_field :containers_needed %>
   		<br>
   		<br>
-  		<%= form.submit %>
+  		<%= form.submit class: "btn btn-primary" %>
   	<% end %>
   </div>
 
@@ -76,7 +76,7 @@
   		<%= select_tag "job_id", options_from_collection_for_select(@jobs, "id", "title") %>
   		<br>
   		<br>
-  		<%= form.submit "Assign" %>
+  		<%= form.submit "Assign", class: "btn btn-primary" %>
   	<% end %>
   </div>
 

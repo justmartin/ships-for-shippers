@@ -10,4 +10,5 @@ class Boat < ApplicationRecord
   :content_type => /\Aimage\/.*\Z/
   
   validates :name, uniqueness: true
+
 end
