@@ -12,17 +12,17 @@ class BoatsController < ApplicationController
       flash[:alert] = "There Was An Error Creating Your Boat."
       flash[:boat_error] = @boat.errors.full_messages
     end
-    
+
     redirect_to "/"
   end
 
   def destroy
     @boat = Boat.find(params["boat"]["id"])
 
-    if BoatsJob.no_assignment_for?(@boat.id) && @boat.destroy
+    if BoatsJob.no_boat_assignment_for?(@boat.id) && @boat.destroy
       flash[:notice] = "Boat Deleted Successfully!"
     else
-      flash[:alert] = "This boat has an assignment... Aborting!"
+      flash[:alert] = "This Boat Has An Assignment... Aborting!"
     end
 
     redirect_to "/"

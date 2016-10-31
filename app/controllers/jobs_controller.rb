@@ -16,6 +16,18 @@ class JobsController < ApplicationController
     end
   end
 
+  def destroy
+    @job = Job.find(params["job"]["id"])
+
+    if BoatsJob.no_job_assignment_for?(@job.id) && @job.destroy
+      flash[:notice] = "Job Deleted Successfully!"
+    else
+      flash[:alert] = "This Job Has An Assignment... Aborting!"
+    end
+
+    redirect_to "/"
+  end
+
   private # ========================================================
 
   def job_params

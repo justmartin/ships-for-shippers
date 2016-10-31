@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post "/jobs" => "jobs#create"
   post "/boats_jobs" => "boats_jobs#create"
   post "/boats/delete" => "boats#destroy"
+  post "/jobs/delete" => "jobs#destroy"
 
   resources :boats, only: [:create]
 end

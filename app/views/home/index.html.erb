@@ -111,6 +111,7 @@
 	  		<p>Destination: <%= job.destination %></p>
 	  		<p>Cost: <%= number_to_currency(job.cost, unit: "$") %></p>
 	  		<p>Containers Needed: <%= job.containers_needed %></p>
+        <%= button_to "Delete Job", "/jobs/delete", method: "post", params: {'job[id]' => job.id} , class: "btn btn-primary" %>
 	  	<% end %>
   	</ul>
   </div>
