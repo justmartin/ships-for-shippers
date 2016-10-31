@@ -94,6 +94,7 @@
 	  		<p>Container Capacity: <%= boat.container_capacity %></p>
 	  		<p>Location: <%= boat.location %></p>
 	  		<%= image_tag boat.avatar.url(:medium) %>
+        <%= button_to "Delete Boat", "/boats/delete", method: "post", params: {'boat[id]' => boat.id} , class: "btn btn-primary" %>
 	  	<% end %>
   	</ul>
   </div>

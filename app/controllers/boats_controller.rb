@@ -8,12 +8,24 @@ class BoatsController < ApplicationController
 
     if @boat.save
       flash[:notice] = "Your Boat Was Created!"
-      redirect_to "/"
     else
       flash[:alert] = "There Was An Error Creating Your Boat."
       flash[:boat_error] = @boat.errors.full_messages
-      redirect_to "/"
     end
+    
+    redirect_to "/"
+  end
+
+  def destroy
+    @boat = Boat.find(params["boat"]["id"])
+
+    if BoatsJob.no_assignment_for?(@boat.id) && @boat.destroy
+      flash[:notice] = "Boat Deleted Successfully!"
+    else
+      flash[:alert] = "This boat has an assignment... Aborting!"
+    end
+
+    redirect_to "/"
   end
 
   private # ========================================================
