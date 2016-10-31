@@ -17,7 +17,18 @@ class BoatsJobsController < ApplicationController
         format.js { redirect_to "/" }
       end
     end
-    
+  end
+
+  def destroy
+    @assignment = BoatsJob.find(params["assignment"]["id"])
+
+    if @assignment.destroy
+      flash[:alert] = "Assignment Was Deleted Successfully!"
+    else
+      flash[:notice] = "There Was An Error Deleting The Assignment. Try Again."
+    end
+
+    redirect_to "/"
   end
 
 end

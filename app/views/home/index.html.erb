@@ -123,6 +123,7 @@
 	  	<% @assignments.each do |assignment| %>
 	  		<li>Boat: <%= assignment.boat.name %></li>
 	  		<p>Job: <%= assignment.job.title %></p>
+        <%= button_to "Delete Job", "/boats_jobs/delete", method: "post", params: {'assignment[id]' => assignment.id} , class: "btn btn-primary" %>
 	  	<% end %>
   	</ul>
   </div>
