@@ -10,5 +10,7 @@ class Boat < ApplicationRecord
   :content_type => /\Aimage\/.*\Z/
   
   validates :name, uniqueness: true
+  validates :name, presence: true
+  validates :container_capacity, presence: true
 
 end

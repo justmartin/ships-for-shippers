@@ -94,7 +94,7 @@
 	  		<p>Container Capacity: <%= boat.container_capacity %></p>
 	  		<p>Location: <%= boat.location %></p>
 	  		<%= image_tag boat.avatar.url(:medium) %>
-        <%= button_to "Delete Boat", "/boats/delete", method: "post", params: {'boat[id]' => boat.id} , class: "btn btn-primary" %>
+        <%= button_to "Delete Boat", "/boats/delete", method: "post", params: {'boat[id]' => boat.id} , class: "btn btn-warning" %>
 	  	<% end %>
   	</ul>
   </div>
@@ -111,7 +111,7 @@
 	  		<p>Destination: <%= job.destination %></p>
 	  		<p>Cost: <%= number_to_currency(job.cost, unit: "$") %></p>
 	  		<p>Containers Needed: <%= job.containers_needed %></p>
-        <%= button_to "Delete Job", "/jobs/delete", method: "post", params: {'job[id]' => job.id} , class: "btn btn-primary" %>
+        <%= button_to "Delete Job", "/jobs/delete", method: "post", params: {'job[id]' => job.id} , class: "btn btn-warning" %>
 	  	<% end %>
   	</ul>
   </div>
@@ -123,7 +123,7 @@
 	  	<% @assignments.each do |assignment| %>
 	  		<li>Boat: <%= assignment.boat.name %></li>
 	  		<p>Job: <%= assignment.job.title %></p>
-        <%= button_to "Delete Job", "/boats_jobs/delete", method: "post", params: {'assignment[id]' => assignment.id} , class: "btn btn-primary" %>
+        <%= button_to "Delete Job", "/boats_jobs/delete", method: "post", params: {'assignment[id]' => assignment.id} , class: "btn btn-warning" %>
 	  	<% end %>
   	</ul>
   </div>
